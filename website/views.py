@@ -3,10 +3,13 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 from .forms import SignUpForm
+from .models import Record
 # https://getbootstrap.com/docs/5.3/components/alerts/
 
 
 def home(request):
+    records = Record.objects.all()
+
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -19,7 +22,7 @@ def home(request):
             messages.error(request, 'Username or password not recognized! Try again.')
             return redirect('home')
 
-    return render(request, 'home.html', {})
+    return render(request, 'home.html', {'records': records})
 
 
 def logout_user(request):
