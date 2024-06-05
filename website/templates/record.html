@@ -14,7 +14,7 @@
       <strong>Address: </strong><p class="card-text">{{ record.address }}</p>
       <strong>City, State. (Zipcode): </strong><p class="card-text">{{ record.city }}, {{ record.state }}. ({{ record.zipcode }})</p>
       <a href="#" class="btn btn-primary">Edit</a>
-      <a href="#" class="btn btn-danger">Delete</a>
+      <a href="{% url 'delete_record' record.id %}" class="btn btn-danger">Delete</a>
     </div>
 </div>
 <p align="right"><em>Created on {{ record.created_at }}</em></p>
